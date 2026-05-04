@@ -3,9 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TransformaIA — Inteligencia Artificial para tu Negocio</title>
+
+<!-- ── SEO META TAGS ── -->
+<title>TransformaIA — Automatización con Inteligencia Artificial para tu Negocio | Monterrey</title>
+<meta name="description" content="Automatiza tu negocio con IA o aprende a usarla desde cero. Soluciones prácticas de inteligencia artificial para empresas y personas en México. Sin conocimientos técnicos previos.">
+<meta name="keywords" content="inteligencia artificial negocios, automatización con IA, cursos IA México, automatización empresas Monterrey, TransformaIA, consultoría IA">
+<meta name="author" content="TransformaIA">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://transformaia.com/">
+
+<!-- ── OPEN GRAPH (Facebook, LinkedIn, WhatsApp) ── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://transformaia.com/">
+<meta property="og:title" content="TransformaIA — Inteligencia Artificial para tu Negocio">
+<meta property="og:description" content="Automatizamos procesos con IA y capacitamos personas para aprovecharla. Resultados desde el primer día, sin complicaciones.">
+<meta property="og:image" content="https://transformaia.com/og-image.png">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="TransformaIA">
+
+<!-- ── TWITTER CARD ── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TransformaIA — IA para tu Negocio">
+<meta name="twitter:description" content="Automatizamos procesos con IA y capacitamos personas. Sin complicaciones.">
+<meta name="twitter:image" content="https://transformaia.com/og-image.png">
+
+<!-- ── SCHEMA.ORG JSON-LD ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "TransformaIA",
+  "description": "Automatización con inteligencia artificial para empresas y cursos de IA para personas.",
+  "url": "https://transformaia.com",
+  "telephone": "+528115274176",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Monterrey",
+    "addressRegion": "Nuevo León",
+    "addressCountry": "MX"
+  },
+  "priceRange": "$$",
+  "serviceType": ["Automatización con IA", "Desarrollo web", "Cursos de IA", "Consultoría digital"]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,6 +68,8 @@
     --card-bg: rgba(17,24,39,0.8);
     --glow-blue: 0 0 40px rgba(59,130,246,0.15);
     --glow-purple: 0 0 40px rgba(124,58,237,0.15);
+    /* Accesibilidad: colores con contraste mínimo AA */
+    --gray-accessible: #B0B7C3;
   }
 
   html { scroll-behavior: smooth; }
@@ -42,7 +88,24 @@
     line-height: 1.15;
   }
 
-  /* ─── NOISE TEXTURE OVERLAY ─── */
+  /* ── SKIP LINK (accesibilidad teclado) ── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 8px;
+    background: var(--blue);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 0 0 8px 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 9999;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 0; }
+
+  /* ── NOISE TEXTURE ── */
   body::before {
     content: '';
     position: fixed;
@@ -53,12 +116,12 @@
     opacity: 0.4;
   }
 
-  /* ─── NAVBAR ─── */
+  /* ── NAVBAR ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 20px 5%;
+    padding: 16px 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -68,16 +131,24 @@
     transition: all 0.3s;
   }
 
-  .nav-logo {
+  .nav-logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Logo SVG inline estilos */
+  .logo-svg { width: 36px; height: 36px; flex-shrink: 0; }
+
+  .nav-wordmark {
     font-family: 'Sora', sans-serif;
     font-weight: 800;
-    font-size: 1.3rem;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--blue), var(--purple-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 1.25rem;
+    letter-spacing: -0.03em;
+    color: #e0e7ff;
   }
+  .nav-wordmark span { color: #a78bfa; }
 
   .nav-links {
     display: flex;
@@ -86,14 +157,20 @@
   }
 
   .nav-links a {
-    color: var(--gray);
+    color: var(--gray-accessible);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover,
+  .nav-links a:focus { color: var(--white); outline: none; }
+  .nav-links a:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
 
   .nav-cta {
     background: linear-gradient(135deg, var(--blue), var(--purple));
@@ -107,10 +184,20 @@
 
   .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
 
-  .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-  .hamburger span { width: 22px; height: 2px; background: var(--gray); border-radius: 2px; transition: 0.3s; }
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+  }
+  .hamburger span { width: 22px; height: 2px; background: var(--gray); border-radius: 2px; display: block; transition: 0.3s; }
+  .hamburger:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
 
-  /* ─── HERO ─── */
+  /* ── HERO ── */
   #hero {
     min-height: 100vh;
     display: flex;
@@ -122,7 +209,6 @@
     overflow: hidden;
   }
 
-  /* Mesh gradient background */
   #hero::before {
     content: '';
     position: absolute;
@@ -192,7 +278,7 @@
 
   .hero-sub {
     font-size: clamp(1rem, 2.2vw, 1.2rem);
-    color: var(--gray);
+    color: var(--gray-accessible);
     max-width: 560px;
     margin: 0 auto 40px;
     font-weight: 300;
@@ -223,10 +309,8 @@
     box-shadow: 0 0 30px rgba(59,130,246,0.3);
   }
 
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 40px rgba(59,130,246,0.4);
-  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(59,130,246,0.4); }
+  .btn-primary:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 10px; }
 
   .btn-secondary {
     display: inline-flex;
@@ -243,389 +327,16 @@
     transition: border-color 0.2s, color 0.2s, transform 0.2s;
   }
 
-  .btn-secondary:hover {
-    border-color: rgba(59,130,246,0.4);
-    color: var(--white);
-    transform: translateY(-2px);
-  }
+  .btn-secondary:hover { border-color: rgba(59,130,246,0.4); color: var(--white); transform: translateY(-2px); }
+  .btn-secondary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 10px; }
 
-  /* Hero main button emphasis */
   .btn-hero-main {
     padding: 18px 38px;
     font-size: 1.05rem;
     box-shadow: 0 0 50px rgba(59,130,246,0.4), 0 0 20px rgba(124,58,237,0.25);
   }
 
-  /* ─── AUDIENCIA ─── */
-  #audiencia {
-    background: var(--bg2);
-    padding: 96px 5%;
-  }
-
-  .audiencia-header {
-    text-align: center;
-    margin-bottom: 48px;
-  }
-
-  .audiencia-header .section-label { justify-content: center; }
-
-  .audiencia-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .audiencia-card {
-    background: rgba(11,15,26,0.7);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 40px 36px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-
-  .audiencia-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .audiencia-card.empresas::before {
-    background: linear-gradient(90deg, var(--blue), var(--purple));
-  }
-
-  .audiencia-card.personas::before {
-    background: linear-gradient(90deg, var(--purple), var(--blue-light));
-  }
-
-  .audiencia-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3), var(--glow-blue);
-  }
-
-  .audiencia-card:hover::before { opacity: 1; }
-
-  .audiencia-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 5px 14px;
-    border-radius: 100px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .audiencia-badge.emp {
-    background: rgba(59,130,246,0.12);
-    border: 1px solid rgba(59,130,246,0.25);
-    color: var(--blue-light);
-  }
-
-  .audiencia-badge.per {
-    background: rgba(124,58,237,0.12);
-    border: 1px solid rgba(124,58,237,0.25);
-    color: var(--purple-light);
-  }
-
-  .audiencia-card h3 {
-    font-size: 1.25rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-    letter-spacing: -0.02em;
-  }
-
-  .audiencia-card > p {
-    color: var(--gray);
-    font-size: 0.9rem;
-    line-height: 1.65;
-    margin-bottom: 24px;
-  }
-
-  .audiencia-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
-    margin-bottom: 32px;
-  }
-
-  .audiencia-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.88rem;
-    color: var(--gray-light);
-  }
-
-  .audiencia-list li::before {
-    content: '→';
-    color: var(--blue-light);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .audiencia-card.personas .audiencia-list li::before {
-    color: var(--purple-light);
-  }
-
-  .btn-audiencia {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    border-radius: 9px;
-    font-weight: 600;
-    font-size: 0.88rem;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .btn-audiencia.emp-btn {
-    background: linear-gradient(135deg, var(--blue), #2563eb);
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(59,130,246,0.3);
-  }
-
-  .btn-audiencia.per-btn {
-    background: linear-gradient(135deg, var(--purple), #6d28d9);
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(124,58,237,0.3);
-  }
-
-  .btn-audiencia:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-  }
-
-  /* ─── FORMULARIO ─── */
-  #contacto {
-    background: var(--bg2);
-    position: relative;
-    overflow: hidden;
-  }
-
-  #contacto::before {
-    content: '';
-    position: absolute;
-    width: 600px; height: 400px;
-    background: radial-gradient(ellipse, rgba(124,58,237,0.07) 0%, transparent 70%);
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    pointer-events: none;
-  }
-
-  .contacto-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 80px;
-    align-items: start;
-    position: relative;
-    z-index: 2;
-  }
-
-  .contacto-info h2 { margin-bottom: 16px; }
-  .contacto-info p { color: var(--gray); font-size: 0.95rem; line-height: 1.7; margin-bottom: 32px; }
-
-  .trust-items {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.88rem;
-    color: var(--gray-light);
-  }
-
-  .trust-item-icon {
-    width: 34px; height: 34px;
-    background: rgba(59,130,246,0.1);
-    border: 1px solid rgba(59,130,246,0.2);
-    border-radius: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.95rem;
-    flex-shrink: 0;
-  }
-
-  .form-card {
-    background: rgba(11,15,26,0.8);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 40px 36px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-  }
-
-  .form-card h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .form-note {
-    color: var(--gray);
-    font-size: 0.82rem;
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .form-note::before {
-    content: '⏱';
-    font-size: 0.85rem;
-  }
-
-  .form-group {
-    margin-bottom: 18px;
-  }
-
-  .form-group label {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--gray-light);
-    margin-bottom: 7px;
-    letter-spacing: 0.02em;
-  }
-
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 9px;
-    padding: 12px 16px;
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-
-  .form-group input::placeholder,
-  .form-group textarea::placeholder { color: rgba(156,163,175,0.5); }
-
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    border-color: rgba(59,130,246,0.5);
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-  }
-
-  .form-group textarea { resize: vertical; min-height: 110px; }
-
-  .form-group select option { background: #111827; color: #fff; }
-
-  .tipo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .tipo-option {
-    position: relative;
-  }
-
-  .tipo-option input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 0; height: 0;
-  }
-
-  .tipo-label {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    padding: 11px 16px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 9px;
-    cursor: pointer;
-    font-size: 0.88rem;
-    color: var(--gray-light);
-    transition: border-color 0.2s, background 0.2s, color 0.2s;
-    user-select: none;
-  }
-
-  .tipo-label .tipo-icon { font-size: 1rem; }
-
-  .tipo-option input[type="radio"]:checked + .tipo-label {
-    border-color: var(--blue);
-    background: rgba(59,130,246,0.1);
-    color: var(--white);
-  }
-
-  .tipo-label:hover {
-    border-color: rgba(59,130,246,0.3);
-    color: var(--white);
-  }
-
-  .btn-submit {
-    width: 100%;
-    background: linear-gradient(135deg, var(--blue), var(--purple));
-    color: #fff;
-    border: none;
-    padding: 15px 24px;
-    border-radius: 10px;
-    font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-    box-shadow: 0 4px 24px rgba(59,130,246,0.3);
-    margin-top: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 36px rgba(59,130,246,0.4);
-  }
-
-  .btn-submit:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  .form-success {
-    display: none;
-    text-align: center;
-    padding: 32px 0;
-  }
-
-  .form-success .success-icon { font-size: 2.5rem; margin-bottom: 14px; }
-  .form-success h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-  .form-success p { color: var(--gray); font-size: 0.9rem; }
-
-  @media (max-width: 768px) {
-    .audiencia-grid { grid-template-columns: 1fr; }
-    .contacto-wrap { grid-template-columns: 1fr; gap: 48px; }
-  }
-
-  /* Floating stats */
+  /* ── HERO STATS ── */
   .hero-stats {
     display: flex;
     justify-content: center;
@@ -649,13 +360,9 @@
     background-clip: text;
   }
 
-  .stat-label {
-    font-size: 0.8rem;
-    color: var(--gray);
-    margin-top: 2px;
-  }
+  .stat-label { font-size: 0.8rem; color: var(--gray-accessible); margin-top: 2px; }
 
-  /* ─── SECTION COMMON ─── */
+  /* ── SECTION COMMON ── */
   section { padding: 96px 5%; position: relative; }
 
   .section-label {
@@ -685,14 +392,116 @@
   }
 
   .section-sub {
-    color: var(--gray);
+    color: var(--gray-accessible);
     font-size: 1.05rem;
     font-weight: 300;
     max-width: 540px;
     line-height: 1.7;
   }
 
-  /* ─── PROBLEMA ─── */
+  /* ── AUDIENCIA ── */
+  #audiencia { background: var(--bg2); padding: 96px 5%; }
+
+  .audiencia-header { text-align: center; margin-bottom: 48px; }
+  .audiencia-header .section-label { justify-content: center; }
+
+  .audiencia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .audiencia-card {
+    background: rgba(11,15,26,0.7);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+
+  .audiencia-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .audiencia-card.empresas::before { background: linear-gradient(90deg, var(--blue), var(--purple)); }
+  .audiencia-card.personas::before { background: linear-gradient(90deg, var(--purple), var(--blue-light)); }
+
+  .audiencia-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3), var(--glow-blue);
+  }
+  .audiencia-card:hover::before { opacity: 1; }
+
+  .audiencia-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .audiencia-badge.emp {
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.25);
+    color: var(--blue-light);
+  }
+
+  .audiencia-badge.per {
+    background: rgba(124,58,237,0.12);
+    border: 1px solid rgba(124,58,237,0.25);
+    color: var(--purple-light);
+  }
+
+  .audiencia-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+  .audiencia-card > p { color: var(--gray-accessible); font-size: 0.9rem; line-height: 1.65; margin-bottom: 24px; }
+
+  .audiencia-list { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 32px; }
+
+  .audiencia-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--gray-light);
+  }
+
+  .audiencia-list li::before { content: '→'; color: var(--blue-light); font-weight: 700; flex-shrink: 0; }
+  .audiencia-card.personas .audiencia-list li::before { color: var(--purple-light); }
+
+  .btn-audiencia {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 9px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-audiencia.emp-btn { background: linear-gradient(135deg, var(--blue), #2563eb); color: #fff; box-shadow: 0 4px 20px rgba(59,130,246,0.3); }
+  .btn-audiencia.per-btn { background: linear-gradient(135deg, var(--purple), #6d28d9); color: #fff; box-shadow: 0 4px 20px rgba(124,58,237,0.3); }
+  .btn-audiencia:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-audiencia:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 9px; }
+
+  /* ── PROBLEMA ── */
   #problema { background: var(--bg); }
 
   .problema-grid {
@@ -721,11 +530,7 @@
     transition: opacity 0.3s;
   }
 
-  .problema-card:hover {
-    border-color: rgba(59,130,246,0.3);
-    transform: translateY(-4px);
-  }
-
+  .problema-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-4px); }
   .problema-card:hover::before { opacity: 1; }
 
   .problema-icon {
@@ -740,35 +545,15 @@
     font-size: 1.3rem;
   }
 
-  .problema-card h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
-  }
+  .problema-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .problema-card p { color: var(--gray-accessible); font-size: 0.9rem; line-height: 1.65; }
 
-  .problema-card p {
-    color: var(--gray);
-    font-size: 0.9rem;
-    line-height: 1.65;
-  }
+  /* ── SOLUCIÓN ── */
+  #solucion { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); }
 
-  /* ─── SOLUCIÓN ─── */
-  #solucion {
-    background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
-  }
+  .solucion-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 
-  .solucion-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .solucion-visual {
-    position: relative;
-    height: 420px;
-  }
+  .solucion-visual { position: relative; height: 420px; }
 
   .solucion-box {
     position: absolute;
@@ -800,25 +585,11 @@
 
   .solucion-box .box-icon { font-size: 1.5rem; margin-bottom: 8px; display: block; }
   .solucion-box .box-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.85rem; }
-  .solucion-box .box-sub { color: var(--gray); font-size: 0.75rem; margin-top: 4px; }
+  .solucion-box .box-sub { color: var(--gray-accessible); font-size: 0.75rem; margin-top: 4px; }
 
-  /* connecting lines svg */
-  .connector-lines {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    opacity: 0.25;
-  }
+  .connector-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.25; }
 
-  .check-list {
-    list-style: none;
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+  .check-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
 
   .check-list li {
     display: flex;
@@ -843,17 +614,13 @@
     margin-top: 1px;
   }
 
-  /* ─── SERVICIOS ─── */
+  /* ── SERVICIOS ── */
   #servicios { background: var(--bg2); }
 
   .servicios-header { text-align: center; margin-bottom: 56px; }
   .servicios-header .section-label { justify-content: center; }
 
-  .servicios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-  }
+  .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
 
   .servicio-card {
     background: rgba(11,15,26,0.6);
@@ -876,12 +643,7 @@
     transition: opacity 0.3s;
   }
 
-  .servicio-card:hover {
-    border-color: rgba(59,130,246,0.25);
-    transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3), var(--glow-blue);
-  }
-
+  .servicio-card:hover { border-color: rgba(59,130,246,0.25); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3), var(--glow-blue); }
   .servicio-card:hover::after { opacity: 1; }
 
   .servicio-icon {
@@ -898,19 +660,8 @@
   .servicio-icon.purple { background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.2); }
   .servicio-icon.mixed { background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(124,58,237,0.12)); border: 1px solid rgba(96,165,250,0.2); }
 
-  .servicio-card h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    letter-spacing: -0.015em;
-  }
-
-  .servicio-card p {
-    color: var(--gray);
-    font-size: 0.88rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-  }
+  .servicio-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.015em; }
+  .servicio-card p { color: var(--gray-accessible); font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px; }
 
   .servicio-tag {
     display: inline-block;
@@ -925,21 +676,12 @@
     text-transform: uppercase;
   }
 
-  /* ─── BENEFICIOS ─── */
+  /* ── BENEFICIOS ── */
   #beneficios { background: var(--bg); }
 
-  .beneficios-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
+  .beneficios-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 
-  .beneficio-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
+  .beneficio-list { display: flex; flex-direction: column; gap: 24px; }
 
   .beneficio-item {
     display: flex;
@@ -951,10 +693,7 @@
     transition: border-color 0.3s, transform 0.2s;
   }
 
-  .beneficio-item:hover {
-    border-color: rgba(124,58,237,0.3);
-    transform: translateX(4px);
-  }
+  .beneficio-item:hover { border-color: rgba(124,58,237,0.3); transform: translateX(4px); }
 
   .beneficio-num {
     font-family: 'Sora', sans-serif;
@@ -969,21 +708,8 @@
     margin-top: 2px;
   }
 
-  .beneficio-text h4 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
-  .beneficio-text p {
-    color: var(--gray);
-    font-size: 0.88rem;
-    line-height: 1.65;
-  }
-
-  .beneficios-visual {
-    position: relative;
-  }
+  .beneficio-text h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .beneficio-text p { color: var(--gray-accessible); font-size: 0.88rem; line-height: 1.65; }
 
   .big-card {
     background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(124,58,237,0.08));
@@ -995,9 +721,8 @@
 
   .big-card-title {
     font-family: 'Sora', sans-serif;
-    font-size: 1rem;
     font-weight: 600;
-    color: var(--gray);
+    color: var(--gray-accessible);
     margin-bottom: 28px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -1006,21 +731,10 @@
 
   .progress-item { margin-bottom: 22px; }
 
-  .progress-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 0.88rem;
-  }
-
+  .progress-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem; }
   .progress-header span:last-child { color: var(--blue-light); font-weight: 600; }
 
-  .progress-bar {
-    height: 6px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 100px;
-    overflow: hidden;
-  }
+  .progress-bar { height: 6px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
 
   .progress-fill {
     height: 100%;
@@ -1029,20 +743,12 @@
     animation: growBar 1.5s ease-out both;
   }
 
-  @keyframes growBar {
-    from { width: 0 !important; }
-  }
+  @keyframes growBar { from { width: 0 !important; } }
 
-  /* ─── CONFIANZA ─── */
-  #confianza {
-    background: var(--bg2);
-    text-align: center;
-  }
+  /* ── CONFIANZA ── */
+  #confianza { background: var(--bg2); text-align: center; }
 
-  .confianza-inner {
-    max-width: 760px;
-    margin: 0 auto;
-  }
+  .confianza-inner { max-width: 760px; margin: 0 auto; }
 
   .quote-mark {
     font-family: 'Sora', sans-serif;
@@ -1067,13 +773,7 @@
     margin-bottom: 24px;
   }
 
-  .feature-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin-top: 48px;
-  }
+  .feature-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 48px; }
 
   .pill {
     display: inline-flex;
@@ -1091,7 +791,7 @@
   .pill:hover { border-color: rgba(59,130,246,0.3); color: var(--white); }
   .pill-dot { width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--purple)); }
 
-  /* ─── CTA FINAL ─── */
+  /* ── CTA FINAL ── */
   #cta-final {
     background: var(--bg);
     text-align: center;
@@ -1135,22 +835,149 @@
     box-shadow: var(--glow-blue);
   }
 
-  .cta-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 16px;
+  .cta-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
+  .cta-sub { color: var(--gray-accessible); font-size: 1.05rem; margin-bottom: 40px; line-height: 1.7; font-weight: 300; }
+
+  /* ── CONTACTO ── */
+  #contacto { background: var(--bg2); position: relative; overflow: hidden; }
+
+  #contacto::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(124,58,237,0.07) 0%, transparent 70%);
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
   }
 
-  .cta-sub {
-    color: var(--gray);
-    font-size: 1.05rem;
-    margin-bottom: 40px;
-    line-height: 1.7;
-    font-weight: 300;
+  .contacto-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; position: relative; z-index: 2; }
+
+  .contacto-info h2 { margin-bottom: 16px; }
+  .contacto-info p { color: var(--gray-accessible); font-size: 0.95rem; line-height: 1.7; margin-bottom: 32px; }
+
+  .trust-items { display: flex; flex-direction: column; gap: 14px; }
+
+  .trust-item { display: flex; align-items: center; gap: 12px; font-size: 0.88rem; color: var(--gray-light); }
+
+  .trust-item-icon {
+    width: 34px; height: 34px;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
   }
 
-  /* ─── FOOTER ─── */
+  .form-card {
+    background: rgba(11,15,26,0.8);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 36px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+
+  .form-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+
+  .form-note { color: var(--gray-accessible); font-size: 0.82rem; margin-bottom: 28px; display: flex; align-items: center; gap: 6px; }
+  .form-note::before { content: '⏱'; font-size: 0.85rem; }
+
+  .form-group { margin-bottom: 18px; }
+
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--gray-light); margin-bottom: 7px; letter-spacing: 0.02em; }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 9px;
+    padding: 12px 16px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(176,183,195,0.5); }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: rgba(59,130,246,0.6);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .tipo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .tipo-option { position: relative; }
+
+  .tipo-option input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+
+  .tipo-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    color: var(--gray-light);
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+    user-select: none;
+  }
+
+  .tipo-option input[type="radio"]:checked + .tipo-label {
+    border-color: var(--blue);
+    background: rgba(59,130,246,0.1);
+    color: var(--white);
+  }
+
+  .tipo-option input[type="radio"]:focus-visible + .tipo-label {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+  }
+
+  .tipo-label:hover { border-color: rgba(59,130,246,0.3); color: var(--white); }
+
+  .btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    color: #fff;
+    border: none;
+    padding: 15px 24px;
+    border-radius: 10px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    box-shadow: 0 4px 24px rgba(59,130,246,0.3);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(59,130,246,0.4); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .btn-submit:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 10px; }
+
+  .form-success { display: none; text-align: center; padding: 32px 0; }
+  .form-success .success-icon { font-size: 2.5rem; margin-bottom: 14px; }
+  .form-success h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .form-success p { color: var(--gray-accessible); font-size: 0.9rem; }
+
+  /* ── FOOTER ── */
   footer {
     background: var(--bg2);
     border-top: 1px solid var(--border);
@@ -1158,23 +985,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: gap;
+    flex-wrap: wrap;
     gap: 20px;
   }
 
-  .footer-logo {
+  .footer-logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .footer-logo-svg { width: 28px; height: 28px; }
+
+  .footer-wordmark {
     font-family: 'Sora', sans-serif;
     font-weight: 800;
-    font-size: 1.1rem;
-    background: linear-gradient(135deg, var(--blue), var(--purple-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 1rem;
+    color: #e0e7ff;
   }
+  .footer-wordmark span { color: #a78bfa; }
 
-  footer p { color: var(--gray); font-size: 0.82rem; }
+  footer p { color: var(--gray-accessible); font-size: 0.82rem; }
 
-  /* ─── WHATSAPP FLOAT ─── */
+  /* ── WHATSAPP FLOAT ── */
   .wa-float {
     position: fixed;
     bottom: 28px; right: 28px;
@@ -1195,11 +1023,8 @@
     font-family: 'Sora', sans-serif;
   }
 
-  .wa-float:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(59,130,246,0.45);
-  }
-
+  .wa-float:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(59,130,246,0.45); }
+  .wa-float:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
   .wa-float svg { width: 22px; height: 22px; flex-shrink: 0; }
 
   .wa-pulse {
@@ -1225,44 +1050,62 @@
     to { transform: scale(2); opacity: 0; }
   }
 
-  /* ─── ANIMATIONS ─── */
+  /* ── ANIMATIONS ── */
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
 
-  /* ─── RESPONSIVE ─── */
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);
+    opacity: 0.25;
+  }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 16px 5%; }
-    .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(11,15,26,0.97); padding: 24px 5%; flex-direction: column; gap: 20px; border-bottom: 1px solid var(--border); backdrop-filter: blur(20px); }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 68px; left: 0; right: 0;
+      background: rgba(11,15,26,0.97);
+      padding: 24px 5%;
+      flex-direction: column;
+      gap: 20px;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+    }
     .nav-links.open { display: flex; }
     .hamburger { display: flex; }
 
+    .audiencia-grid { grid-template-columns: 1fr; }
     .solucion-wrap, .beneficios-wrap { grid-template-columns: 1fr; gap: 48px; }
     .solucion-visual { height: 300px; }
     .solucion-box.b1, .solucion-box.b2, .solucion-box.b3, .solucion-box.b4 { width: 150px; padding: 14px; }
     .solucion-box.main { width: 170px; }
+    .contacto-wrap { grid-template-columns: 1fr; gap: 48px; }
 
     footer { flex-direction: column; text-align: center; }
 
+    /* WA float: ícono circular en mobile, NO tapa el formulario */
     .wa-float .wa-label { display: none; }
-    .wa-float { padding: 16px; border-radius: 50%; width: 58px; height: 58px; justify-content: center; }
+    .wa-float {
+      padding: 16px;
+      border-radius: 50%;
+      width: 56px; height: 56px;
+      justify-content: center;
+      bottom: 20px; right: 16px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -1271,138 +1114,183 @@
     .solucion-visual { display: none; }
   }
 
-  /* Divider glow */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);
-    opacity: 0.25;
-    margin: 0;
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .reveal { opacity: 1; transform: none; }
   }
 </style>
 </head>
 <body>
 
+<!-- SKIP TO MAIN (accesibilidad teclado) -->
+<a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
 <!-- NAV -->
-<nav id="navbar">
-  <span class="nav-logo">Transforma<span style="opacity:0.7">IA</span></span>
-  <ul class="nav-links" id="navLinks">
+<nav id="navbar" role="navigation" aria-label="Navegación principal">
+  <a href="#hero" class="nav-logo-link" aria-label="TransformaIA — Ir al inicio">
+    <!-- LOGO B: Círculo + Chispa (SVG inline) -->
+    <svg class="logo-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <circle cx="36" cy="36" r="34" fill="#0f172a" stroke="url(#logo-ring)" stroke-width="1.8"/>
+      <defs>
+        <linearGradient id="logo-ring" x1="0" y1="0" x2="72" y2="72" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#3b82f6"/>
+        </linearGradient>
+        <linearGradient id="logo-bolt" x1="36" y1="12" x2="36" y2="60" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#ddd6fe"/>
+          <stop offset="100%" stop-color="#a78bfa"/>
+        </linearGradient>
+      </defs>
+      <!-- Lightning bolt -->
+      <polygon points="41,13 25,40 37,40 31,59 52,34 39,34" fill="url(#logo-bolt)"/>
+      <polygon points="41,13 25,40 37,40 31,59 52,34 39,34" fill="none" stroke="#ede9fe" stroke-width="0.6" opacity="0.5"/>
+      <!-- Glow dot top right -->
+      <circle cx="54" cy="18" r="3.5" fill="#7c3aed" opacity="0.7"/>
+      <circle cx="54" cy="18" r="6" fill="none" stroke="#7c3aed" stroke-width="1" opacity="0.3"/>
+    </svg>
+    <span class="nav-wordmark" aria-hidden="true">Transforma<span>IA</span></span>
+  </a>
+
+  <ul class="nav-links" id="navLinks" role="list">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#beneficios">Beneficios</a></li>
     <li><a href="#contacto">Contacto</a></li>
-    <li><a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20TransformaIA" target="_blank" class="nav-cta">Hablar por WhatsApp →</a></li>
+    <li>
+      <a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20TransformaIA"
+         target="_blank" rel="noopener noreferrer" class="nav-cta"
+         aria-label="Hablar por WhatsApp (abre en nueva ventana)">
+        Hablar por WhatsApp →
+      </a>
+    </li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+
+  <button class="hamburger" id="hamburger" aria-controls="navLinks" aria-expanded="false" aria-label="Abrir menú de navegación" onclick="toggleMenu()">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
+<!-- MAIN CONTENT -->
+<main id="main-content">
+
 <!-- HERO -->
-<section id="hero">
+<section id="hero" aria-labelledby="hero-heading">
   <div class="hero-content">
-    <div class="hero-badge">✦ Inteligencia Artificial para negocios y personas</div>
-    <h1 class="hero-title">
+    <div class="hero-badge" role="text">✦ Inteligencia Artificial para negocios y personas</div>
+    <h1 id="hero-heading" class="hero-title">
       Automatiza tu negocio con IA<br>
       o <span class="gradient-text">aprende a usarla desde cero</span>
     </h1>
     <p class="hero-sub">
-      Creamos soluciones con inteligencia artificial para empresas y capacitamos personas para aprovecharla.
+      Creamos soluciones con inteligencia artificial para empresas y capacitamos personas para aprovecharla. Resultados reales desde el primer día.
     </p>
     <div class="hero-buttons">
-      <a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20TransformaIA" target="_blank" class="btn-primary btn-hero-main">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.822L.065 23.177c-.077.306.036.626.29.816A.94.94 0 001 24a.941.941 0 00.363-.074l5.532-1.876A11.904 11.904 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.756 9.756 0 01-4.959-1.354.941.941 0 00-.738-.085l-3.57 1.21 1.188-3.458a.941.941 0 00-.105-.797A9.756 9.756 0 012.182 12C2.182 6.569 6.569 2.182 12 2.182S21.818 6.569 21.818 12 17.431 21.818 12 21.818z"/></svg>
+      <a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20TransformaIA"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-primary btn-hero-main"
+         aria-label="Hablar por WhatsApp ahora (abre WhatsApp)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.822L.065 23.177c-.077.306.036.626.29.816A.94.94 0 001 24a.941.941 0 00.363-.074l5.532-1.876A11.904 11.904 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.756 9.756 0 01-4.959-1.354.941.941 0 00-.738-.085l-3.57 1.21 1.188-3.458a.941.941 0 00-.105-.797A9.756 9.756 0 012.182 12C2.182 6.569 6.569 2.182 12 2.182S21.818 6.569 21.818 12 17.431 21.818 12 21.818z"/></svg>
         Hablar por WhatsApp ahora
       </a>
       <a href="#servicios" class="btn-secondary">
         Ver servicios
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
-    <div class="hero-stats">
+    <div class="hero-stats" aria-label="Estadísticas de resultados">
       <div class="stat">
-        <div class="stat-number">80%</div>
+        <div class="stat-number" aria-label="Hasta 80%">80%</div>
         <div class="stat-label">Reducción de tiempo</div>
       </div>
       <div class="stat">
-        <div class="stat-number">3x</div>
+        <div class="stat-number" aria-label="3 veces más">3x</div>
         <div class="stat-label">Más productividad</div>
       </div>
       <div class="stat">
-        <div class="stat-number">24/7</div>
+        <div class="stat-number" aria-label="24 horas al día, 7 días a la semana">24/7</div>
         <div class="stat-label">Automatización activa</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="divider" role="separator"></div>
 
 <!-- AUDIENCIA -->
-<section id="audiencia">
+<section id="audiencia" aria-labelledby="audiencia-heading">
   <div class="audiencia-header">
     <div class="section-label reveal">¿Para quién es?</div>
-    <h2 class="section-title reveal">Elige tu camino</h2>
+    <h2 id="audiencia-heading" class="section-title reveal">Elige tu camino</h2>
   </div>
   <div class="audiencia-grid">
-    <div class="audiencia-card empresas reveal reveal-delay-1">
-      <div class="audiencia-badge emp">🏢 Para empresas</div>
-      <h3>Automatiza y crece más rápido</h3>
+    <article class="audiencia-card empresas reveal reveal-delay-1">
+      <div class="audiencia-badge emp" aria-hidden="true">🏢 Para empresas</div>
+      <h3>Automatiza tareas, reduce costos y mejora tus procesos</h3>
       <p>Ayudamos a empresas a automatizar procesos y aumentar resultados con inteligencia artificial aplicada desde el primer día.</p>
-      <ul class="audiencia-list">
+      <ul class="audiencia-list" aria-label="Servicios para empresas">
         <li>Automatización con IA</li>
         <li>Integración de sistemas</li>
         <li>Optimización de procesos</li>
       </ul>
-      <a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20automatizar%20mi%20negocio%20con%20IA" target="_blank" class="btn-audiencia emp-btn">
+      <a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20automatizar%20mi%20negocio%20con%20IA"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-audiencia emp-btn"
+         aria-label="Contactar para automatizar mi negocio (abre WhatsApp)">
         Quiero automatizar mi negocio →
       </a>
-    </div>
-    <div class="audiencia-card personas reveal reveal-delay-2">
-      <div class="audiencia-badge per">👤 Para personas</div>
-      <h3>Aprende IA y abre nuevas oportunidades</h3>
+    </article>
+    <article class="audiencia-card personas reveal reveal-delay-2">
+      <div class="audiencia-badge per" aria-hidden="true">👤 Para personas</div>
+      <h3>Aprende IA aunque no tengas experiencia previa</h3>
       <p>Aprende a usar inteligencia artificial de forma práctica y genera nuevas oportunidades en tu trabajo o negocio.</p>
-      <ul class="audiencia-list">
+      <ul class="audiencia-list" aria-label="Servicios para personas">
         <li>Cursos de IA desde cero</li>
         <li>Uso práctico de herramientas</li>
         <li>Aplicación en trabajo y negocio</li>
       </ul>
-      <a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20aprender%20inteligencia%20artificial" target="_blank" class="btn-audiencia per-btn">
+      <a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20aprender%20IA%20con%20TransformaIA"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-audiencia per-btn"
+         aria-label="Contactar para aprender IA (abre WhatsApp)">
         Quiero aprender IA →
       </a>
-    </div>
+    </article>
   </div>
 </section>
-<section id="problema">
+
+<!-- PROBLEMA -->
+<section id="problema" aria-labelledby="problema-heading">
   <div class="section-label reveal">El problema</div>
-  <h2 class="section-title reveal">¿Tu negocio sigue<br>operando en modo manual?</h2>
+  <h2 id="problema-heading" class="section-title reveal">¿Tu negocio sigue<br>operando en modo manual?</h2>
   <p class="section-sub reveal">Muchas empresas pierden tiempo y dinero por no adoptar herramientas inteligentes. ¿Te identificas con alguno de estos problemas?</p>
 
   <div class="problema-grid">
-    <div class="problema-card reveal reveal-delay-1">
-      <div class="problema-icon">⏳</div>
+    <article class="problema-card reveal reveal-delay-1">
+      <div class="problema-icon" aria-hidden="true">⏳</div>
       <h3>Procesos manuales lentos</h3>
       <p>Tareas repetitivas que consumen horas de tu equipo cada semana, sin generar valor real para el negocio.</p>
-    </div>
-    <div class="problema-card reveal reveal-delay-2">
-      <div class="problema-icon">🔧</div>
+    </article>
+    <article class="problema-card reveal reveal-delay-2">
+      <div class="problema-icon" aria-hidden="true">🔧</div>
       <h3>Falta de automatización</h3>
       <p>Tu competencia ya usa herramientas digitales para trabajar más rápido mientras tú aún lo haces todo a mano.</p>
-    </div>
-    <div class="problema-card reveal reveal-delay-3">
-      <div class="problema-icon">💸</div>
+    </article>
+    <article class="problema-card reveal reveal-delay-3">
+      <div class="problema-icon" aria-hidden="true">💸</div>
       <h3>Pérdida de tiempo y dinero</h3>
       <p>Cada hora perdida en procesos ineficientes es dinero que sale de tu negocio. La inacción tiene un costo real.</p>
-    </div>
+    </article>
   </div>
 </section>
 
 <!-- SOLUCIÓN -->
-<section id="solucion">
+<section id="solucion" aria-labelledby="solucion-heading">
   <div class="solucion-wrap">
     <div>
       <div class="section-label reveal">La solución</div>
-      <h2 class="section-title reveal">TransformaIA automatiza tu negocio con IA</h2>
+      <h2 id="solucion-heading" class="section-title reveal">TransformaIA automatiza tu negocio con IA</h2>
       <p class="section-sub reveal">Implementamos soluciones prácticas y reales, no teoría. Desde el primer día, tu negocio empieza a trabajar más inteligente.</p>
-      <ul class="check-list reveal">
+      <ul class="check-list reveal" aria-label="Qué incluye el servicio">
         <li>Diagnóstico de procesos y oportunidades de automatización</li>
         <li>Implementación de herramientas de IA adaptadas a tu negocio</li>
         <li>Integración con sistemas que ya usas</li>
@@ -1410,18 +1298,18 @@
         <li>Soporte y acompañamiento continuo</li>
       </ul>
     </div>
-    <div class="solucion-visual reveal">
+    <div class="solucion-visual reveal" aria-hidden="true">
       <svg class="connector-lines" viewBox="0 0 400 400">
-        <line x1="90" y1="90" x2="200" y2="200" stroke="url(#lg)" stroke-width="1.5"/>
-        <line x1="310" y1="90" x2="200" y2="200" stroke="url(#lg)" stroke-width="1.5"/>
-        <line x1="90" y1="310" x2="200" y2="200" stroke="url(#lg)" stroke-width="1.5"/>
-        <line x1="310" y1="310" x2="200" y2="200" stroke="url(#lg)" stroke-width="1.5"/>
         <defs>
           <linearGradient id="lg" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#3B82F6"/>
             <stop offset="100%" stop-color="#7C3AED"/>
           </linearGradient>
         </defs>
+        <line x1="90" y1="90" x2="200" y2="200" stroke="url(#lg)" stroke-width="1.5"/>
+        <line x1="310" y1="90" x2="200" y2="200" stroke="url(#lg)" stroke-width="1.5"/>
+        <line x1="90" y1="310" x2="200" y2="200" stroke="url(#lg)" stroke-width="1.5"/>
+        <line x1="310" y1="310" x2="200" y2="200" stroke="url(#lg)" stroke-width="1.5"/>
       </svg>
       <div class="solucion-box main">
         <span class="box-icon">🤖</span>
@@ -1452,82 +1340,82 @@
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="divider" role="separator"></div>
 
 <!-- SERVICIOS -->
-<section id="servicios">
+<section id="servicios" aria-labelledby="servicios-heading">
   <div class="servicios-header">
     <div class="section-label reveal">Servicios</div>
-    <h2 class="section-title reveal">Todo lo que necesitas para<br><span class="gradient-text">crecer con IA</span></h2>
+    <h2 id="servicios-heading" class="section-title reveal">Todo lo que necesitas para<br><span class="gradient-text">crecer con IA</span></h2>
     <p class="section-sub reveal" style="margin: 0 auto;">Soluciones prácticas enfocadas en resultados reales.</p>
   </div>
   <div class="servicios-grid">
-    <div class="servicio-card reveal reveal-delay-1">
-      <div class="servicio-icon blue">🤖</div>
+    <article class="servicio-card reveal reveal-delay-1">
+      <div class="servicio-icon blue" aria-hidden="true">🤖</div>
       <h3>Automatización con IA</h3>
       <p>Automatizamos tareas para ahorrar tiempo y aumentar ventas. Tu equipo deja de hacer trabajo repetitivo y se enfoca en lo que genera dinero.</p>
       <span class="servicio-tag">Más popular</span>
-    </div>
-    <div class="servicio-card reveal reveal-delay-2">
-      <div class="servicio-icon purple">🌐</div>
+    </article>
+    <article class="servicio-card reveal reveal-delay-2">
+      <div class="servicio-icon purple" aria-hidden="true">🌐</div>
       <h3>Desarrollo de páginas web</h3>
       <p>Creamos páginas web que convierten visitas en clientes. Diseño profesional, rápido y optimizado para generar contactos.</p>
       <span class="servicio-tag">Alta conversión</span>
-    </div>
-    <div class="servicio-card reveal reveal-delay-3">
-      <div class="servicio-icon mixed">🔗</div>
+    </article>
+    <article class="servicio-card reveal reveal-delay-3">
+      <div class="servicio-icon mixed" aria-hidden="true">🔗</div>
       <h3>Integración de herramientas</h3>
       <p>Conectamos tus sistemas para trabajar de forma eficiente. CRM, e-commerce, redes sociales y más, funcionando juntos de forma automática.</p>
       <span class="servicio-tag">Productividad</span>
-    </div>
-    <div class="servicio-card reveal reveal-delay-4">
-      <div class="servicio-icon blue">📚</div>
+    </article>
+    <article class="servicio-card reveal reveal-delay-4">
+      <div class="servicio-icon blue" aria-hidden="true">📚</div>
       <h3>Cursos de IA para negocios</h3>
       <p>Capacitación práctica para aprender IA desde cero. Aprende a usar herramientas reales que puedes aplicar en tu trabajo o negocio hoy mismo.</p>
       <span class="servicio-tag">Formación</span>
-    </div>
+    </article>
   </div>
 </section>
 
 <!-- BENEFICIOS -->
-<section id="beneficios">
+<section id="beneficios" aria-labelledby="beneficios-heading">
   <div class="beneficios-wrap">
     <div>
       <div class="section-label reveal">Beneficios</div>
-      <h2 class="section-title reveal">Resultados que se<br>ven desde el primer mes</h2>
+      <h2 id="beneficios-heading" class="section-title reveal">Resultados que se<br>ven desde el primer mes</h2>
       <div class="beneficio-list" style="margin-top: 40px;">
-        <div class="beneficio-item reveal reveal-delay-1">
-          <div class="beneficio-num">01</div>
+        <article class="beneficio-item reveal reveal-delay-1">
+          <div class="beneficio-num" aria-hidden="true">01</div>
           <div class="beneficio-text">
             <h4>Ahorra horas de trabajo</h4>
             <p>Reduce hasta un 80% el tiempo en tareas repetitivas. Lo que antes tomaba horas, la IA lo hace en minutos.</p>
           </div>
-        </div>
-        <div class="beneficio-item reveal reveal-delay-2">
-          <div class="beneficio-num">02</div>
+        </article>
+        <article class="beneficio-item reveal reveal-delay-2">
+          <div class="beneficio-num" aria-hidden="true">02</div>
           <div class="beneficio-text">
             <h4>Consigue más clientes</h4>
             <p>Automatiza el seguimiento y la atención. Responde más rápido y convierte más contactos en ventas reales.</p>
           </div>
-        </div>
-        <div class="beneficio-item reveal reveal-delay-3">
-          <div class="beneficio-num">03</div>
+        </article>
+        <article class="beneficio-item reveal reveal-delay-3">
+          <div class="beneficio-num" aria-hidden="true">03</div>
           <div class="beneficio-text">
             <h4>Automatiza tareas repetitivas</h4>
             <p>Reportes, respuestas, registros, seguimientos — todo puede automatizarse para que tú te enfoques en crecer.</p>
           </div>
-        </div>
-        <div class="beneficio-item reveal reveal-delay-4">
-          <div class="beneficio-num">04</div>
+        </article>
+        <article class="beneficio-item reveal reveal-delay-4">
+          <div class="beneficio-num" aria-hidden="true">04</div>
           <div class="beneficio-text">
             <h4>Reduce costos operativos</h4>
             <p>Haz más con el mismo equipo. La IA no reemplaza personas — las hace mucho más productivas y eficientes.</p>
           </div>
-        </div>
+        </article>
       </div>
     </div>
     <div class="beneficios-visual reveal">
-      <div class="big-card">
+      <div class="big-card" role="img" aria-label="Gráfica de impacto: 80% tiempo ahorrado, 65% más productividad, 45% mejor conversión, 92% reducción de errores">
         <div class="big-card-title">📊 Impacto en tu negocio</div>
         <div class="progress-item">
           <div class="progress-header">
@@ -1562,63 +1450,66 @@
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="divider" role="separator"></div>
 
 <!-- CONFIANZA -->
-<section id="confianza">
+<section id="confianza" aria-labelledby="confianza-heading">
   <div class="confianza-inner">
-    <span class="quote-mark">"</span>
-    <h2 class="quote-text reveal">
+    <span class="quote-mark" aria-hidden="true">"</span>
+    <h2 id="confianza-heading" class="quote-text reveal">
       Soluciones enfocadas en resultados reales para negocios y personas, con experiencia en sistemas y procesos empresariales
     </h2>
     <p class="section-sub reveal" style="margin: 0 auto 0;">
       No vendemos teoría. Implementamos herramientas que funcionan desde el primer día, adaptadas a la realidad de cada negocio.
     </p>
-    <div class="feature-pills reveal">
-      <div class="pill"><div class="pill-dot"></div> Enfoque práctico</div>
-      <div class="pill"><div class="pill-dot"></div> Implementación real</div>
-      <div class="pill"><div class="pill-dot"></div> Orientado a resultados</div>
-      <div class="pill"><div class="pill-dot"></div> Sin conocimientos técnicos previos</div>
-      <div class="pill"><div class="pill-dot"></div> Soporte personalizado</div>
+    <div class="feature-pills reveal" role="list" aria-label="Características del servicio">
+      <div class="pill" role="listitem"><div class="pill-dot" aria-hidden="true"></div> Enfoque práctico</div>
+      <div class="pill" role="listitem"><div class="pill-dot" aria-hidden="true"></div> Implementación real</div>
+      <div class="pill" role="listitem"><div class="pill-dot" aria-hidden="true"></div> Orientado a resultados</div>
+      <div class="pill" role="listitem"><div class="pill-dot" aria-hidden="true"></div> Sin conocimientos técnicos previos</div>
+      <div class="pill" role="listitem"><div class="pill-dot" aria-hidden="true"></div> Soporte personalizado</div>
     </div>
   </div>
 </section>
 
 <!-- CTA FINAL -->
-<section id="cta-final">
+<section id="cta-final" aria-labelledby="cta-heading">
   <div class="cta-inner">
-    <div class="cta-icon reveal">🚀</div>
-    <h2 class="cta-title reveal">Empieza hoy.<br><span class="gradient-text">Sin complicaciones.</span></h2>
+    <div class="cta-icon reveal" aria-hidden="true">🚀</div>
+    <h2 id="cta-heading" class="cta-title reveal">Empieza hoy.<br><span class="gradient-text">Sin complicaciones.</span></h2>
     <p class="cta-sub reveal">Una conversación es suficiente para saber si podemos ayudarte. Sin compromiso, sin tecnicismos.</p>
     <div class="hero-buttons reveal">
-      <a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20empezar%20a%20transformar%20mi%20negocio%20con%20IA" target="_blank" class="btn-primary btn-hero-main">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.822L.065 23.177c-.077.306.036.626.29.816A.94.94 0 001 24a.941.941 0 00.363-.074l5.532-1.876A11.904 11.904 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.756 9.756 0 01-4.959-1.354.941.941 0 00-.738-.085l-3.57 1.21 1.188-3.458a.941.941 0 00-.105-.797A9.756 9.756 0 012.182 12C2.182 6.569 6.569 2.182 12 2.182S21.818 6.569 21.818 12 17.431 21.818 12 21.818z"/></svg>
+      <a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20empezar%20a%20transformar%20mi%20negocio%20con%20IA"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-primary btn-hero-main"
+         aria-label="Hablar por WhatsApp ahora (abre WhatsApp)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.822L.065 23.177c-.077.306.036.626.29.816A.94.94 0 001 24a.941.941 0 00.363-.074l5.532-1.876A11.904 11.904 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.756 9.756 0 01-4.959-1.354.941.941 0 00-.738-.085l-3.57 1.21 1.188-3.458a.941.941 0 00-.105-.797A9.756 9.756 0 012.182 12C2.182 6.569 6.569 2.182 12 2.182S21.818 6.569 21.818 12 17.431 21.818 12 21.818z"/></svg>
         Hablar por WhatsApp ahora
       </a>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="divider" role="separator"></div>
 
 <!-- FORMULARIO -->
-<section id="contacto">
+<section id="contacto" aria-labelledby="contacto-heading">
   <div class="contacto-wrap">
     <div class="contacto-info">
       <div class="section-label reveal">Contacto</div>
-      <h2 class="section-title reveal">¿Prefieres escribirnos<br>por aquí?</h2>
+      <h2 id="contacto-heading" class="section-title reveal">¿Prefieres escribirnos<br>por aquí?</h2>
       <p class="reveal">Cuéntanos qué necesitas y te respondemos en menos de 24 horas con una propuesta clara.</p>
-      <div class="trust-items reveal">
-        <div class="trust-item">
-          <div class="trust-item-icon">⚡</div>
+      <div class="trust-items reveal" role="list">
+        <div class="trust-item" role="listitem">
+          <div class="trust-item-icon" aria-hidden="true">⚡</div>
           Respuesta en menos de 24 horas
         </div>
-        <div class="trust-item">
-          <div class="trust-item-icon">🎯</div>
+        <div class="trust-item" role="listitem">
+          <div class="trust-item-icon" aria-hidden="true">🎯</div>
           Propuesta personalizada sin costo
         </div>
-        <div class="trust-item">
-          <div class="trust-item-icon">🔒</div>
+        <div class="trust-item" role="listitem">
+          <div class="trust-item-icon" aria-hidden="true">🔒</div>
           Tus datos están seguros
         </div>
       </div>
@@ -1626,38 +1517,40 @@
     <div class="form-card reveal reveal-delay-1">
       <h3>Envíanos un mensaje</h3>
       <p class="form-note">Te respondemos en menos de 24 horas</p>
-      <form id="contactForm" action="https://send.pageclip.co/YOUR_API_KEY/contacto" method="post">
+      <form id="contactForm" action="https://submit-form.com/MipwEbJLt" method="post" novalidate>
         <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+          <label for="nombre">Nombre <span aria-hidden="true">*</span></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required autocomplete="name" aria-required="true">
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" placeholder="tu@correo.com" required autocomplete="email" aria-required="true">
         </div>
         <div class="form-group">
-          <label>¿Eres…?</label>
-          <div class="tipo-grid">
-            <div class="tipo-option">
-              <input type="radio" id="tipo-empresa" name="tipo" value="Empresa" checked>
-              <label class="tipo-label" for="tipo-empresa"><span class="tipo-icon">🏢</span> Empresa</label>
+          <fieldset style="border:none;padding:0;margin:0;">
+            <legend style="font-size:0.82rem;font-weight:600;color:var(--gray-light);margin-bottom:7px;letter-spacing:0.02em;">¿Eres…?</legend>
+            <div class="tipo-grid">
+              <div class="tipo-option">
+                <input type="radio" id="tipo-empresa" name="tipo" value="Empresa" checked>
+                <label class="tipo-label" for="tipo-empresa"><span class="tipo-icon" aria-hidden="true">🏢</span> Empresa</label>
+              </div>
+              <div class="tipo-option">
+                <input type="radio" id="tipo-persona" name="tipo" value="Persona">
+                <label class="tipo-label" for="tipo-persona"><span class="tipo-icon" aria-hidden="true">👤</span> Persona</label>
+              </div>
             </div>
-            <div class="tipo-option">
-              <input type="radio" id="tipo-persona" name="tipo" value="Persona">
-              <label class="tipo-label" for="tipo-persona"><span class="tipo-icon">👤</span> Persona</label>
-            </div>
-          </div>
+          </fieldset>
         </div>
         <div class="form-group">
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas o qué quieres automatizar…" required></textarea>
+          <label for="mensaje">Mensaje <span aria-hidden="true">*</span></label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué necesitas o qué quieres automatizar…" required aria-required="true"></textarea>
         </div>
         <button type="submit" class="btn-submit" id="submitBtn">
           <span id="btnText">Enviar solicitud →</span>
         </button>
       </form>
-      <div class="form-success" id="formSuccess">
-        <div class="success-icon">✅</div>
+      <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
+        <div class="success-icon" aria-hidden="true">✅</div>
         <h4>¡Mensaje recibido!</h4>
         <p>Te respondemos en menos de 24 horas. También puedes escribirnos directo por WhatsApp.</p>
       </div>
@@ -1665,21 +1558,37 @@
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
-<footer>
-  <span class="footer-logo">TransformaIA</span>
+<footer role="contentinfo">
+  <a href="#hero" class="footer-logo-wrap" aria-label="TransformaIA — volver al inicio">
+    <svg class="footer-logo-svg" viewBox="0 0 72 72" fill="none" aria-hidden="true" focusable="false">
+      <circle cx="36" cy="36" r="34" fill="#0f172a" stroke="url(#fl-ring)" stroke-width="1.8"/>
+      <defs>
+        <linearGradient id="fl-ring" x1="0" y1="0" x2="72" y2="72" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#3b82f6"/>
+        </linearGradient>
+      </defs>
+      <polygon points="41,13 25,40 37,40 31,59 52,34 39,34" fill="#a78bfa"/>
+    </svg>
+    <span class="footer-wordmark">Transforma<span>IA</span></span>
+  </a>
   <p>© 2025 TransformaIA. Todos los derechos reservados.</p>
   <p style="font-size:0.78rem;">Automatización · Web · Cursos · Consultoría</p>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20TransformaIA" target="_blank" class="wa-float" title="Hablar por WhatsApp">
-  <div class="wa-pulse"></div>
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.822L.065 23.177c-.077.306.036.626.29.816A.94.94 0 001 24a.941.941 0 00.363-.074l5.532-1.876A11.904 11.904 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.756 9.756 0 01-4.959-1.354.941.941 0 00-.738-.085l-3.57 1.21 1.188-3.458a.941.941 0 00-.105-.797A9.756 9.756 0 012.182 12C2.182 6.569 6.569 2.182 12 2.182S21.818 6.569 21.818 12 17.431 21.818 12 21.818z"/></svg>
+<a href="https://wa.me/8115274176?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20TransformaIA"
+   target="_blank" rel="noopener noreferrer"
+   class="wa-float"
+   aria-label="Hablar por WhatsApp (abre WhatsApp en nueva ventana)">
+  <div class="wa-pulse" aria-hidden="true"></div>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.822L.065 23.177c-.077.306.036.626.29.816A.94.94 0 001 24a.941.941 0 00.363-.074l5.532-1.876A11.904 11.904 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.756 9.756 0 01-4.959-1.354.941.941 0 00-.738-.085l-3.57 1.21 1.188-3.458a.941.941 0 00-.105-.797A9.756 9.756 0 012.182 12C2.182 6.569 6.569 2.182 12 2.182S21.818 6.569 21.818 12 17.431 21.818 12 21.818z"/></svg>
   <span class="wa-label">Hablar ahora</span>
 </a>
 
-<script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
 <script>
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
@@ -1695,8 +1604,20 @@
 
   // Mobile menu
   function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('open');
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('hamburger');
+    const isOpen = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+    btn.setAttribute('aria-label', isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
   }
+
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll('#navLinks a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+      document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+    });
+  });
 
   // Navbar scroll effect
   window.addEventListener('scroll', () => {
@@ -1706,7 +1627,7 @@
       : 'rgba(11,15,26,0.85)';
   });
 
-  // Smooth counter animation for stats
+  // Counter animation
   function animateCounters() {
     document.querySelectorAll('.stat-number').forEach(el => {
       const text = el.textContent;
@@ -1717,10 +1638,7 @@
         const step = num / 40;
         const timer = setInterval(() => {
           current += step;
-          if (current >= num) {
-            current = num;
-            clearInterval(timer);
-          }
+          if (current >= num) { current = num; clearInterval(timer); }
           el.textContent = (Number.isInteger(num) ? Math.round(current) : current.toFixed(1)) + suffix;
         }, 30);
       }
@@ -1734,27 +1652,41 @@
     }
   }, { threshold: 0.5 });
 
-  heroObserver.observe(document.querySelector('.hero-stats'));
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) heroObserver.observe(heroStats);
 
-  // Form handling with Pageclip
-  const form = document.getElementById('contactForm');
-  if (form) {
-    Pageclip.form(form, {
-      onSubmit: function() {
-        document.getElementById('submitBtn').disabled = true;
-        document.getElementById('btnText').textContent = 'Enviando…';
-      },
-      onResponse: function(error, response) {
-        if (!error) {
-          form.style.display = 'none';
-          document.getElementById('formSuccess').style.display = 'block';
+  // Form submission
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      btn.disabled = true;
+      btnText.textContent = 'Enviando…';
+
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) {
+          contactForm.style.display = 'none';
+          const success = document.getElementById('formSuccess');
+          success.style.display = 'block';
+          success.focus();
         } else {
-          document.getElementById('submitBtn').disabled = false;
-          document.getElementById('btnText').textContent = 'Enviar solicitud →';
-          alert('Hubo un error. Por favor intenta de nuevo o escríbenos por WhatsApp.');
+          throw new Error('Error de servidor');
         }
-      },
-      successTemplate: '<span></span>'
+      } catch {
+        btn.disabled = false;
+        btnText.textContent = 'Enviar solicitud →';
+        alert('Hubo un error. Por favor intenta de nuevo o escríbenos por WhatsApp.');
+      }
     });
   }
 </script>
